@@ -27,7 +27,7 @@
 #     along with the apaxage Puppet module.  If not, see <http://www.gnu.org/licenses/>.
 
 # [Remember: No empty lines between comments and class definition]
-class apaxage {
+class apaxage() inherits apaxage::params {
 
 
 }

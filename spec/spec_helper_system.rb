@@ -22,6 +22,7 @@ RSpec.configure do |c|
     # Install modules and dependencies
     puppet_module_install(:source => proj_root, :module_name => 'puppet')
     # shell('puppet module install puppetlabs-apache')
+    shell('puppet module install Aethylred-apaxy')
 
     # Install the appropriate version of puppetlabs-stdlib
     case ENV['PUPPET_GEM_VERSION']

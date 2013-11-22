@@ -1,12 +1,23 @@
-# apaxage
+# Apaxage
 
-This is a apaxage puppet module.
+The Apaxage puppet module creates an [Apaxy](http://adamwhitcroft.com/apaxy/) themed package repository for both yum and apt.
 
-# Licensing
+# Danger Will Robinson Danger
 
-Update your license details here.
+This module is a Work In Progress.
+
+# Dependencies
+
+* [Aethylred's Apaxy Module](https://github.com/Aethylred/puppet-apaxy)
+* [Pall Valmundsson's createrepo Module](https://github.com/pall-valmundsson/puppet-createrepo)
+* [Joe Topjian's reprepo Module](https://github.com/jtopjian/puppet-reprepro)
+* [Puppetlabs Apache Module](https://github.com/puppetlabs/puppetlabs-apache)
+* [Puppetlabs vcsrepo Module](https://github.com/puppetlabs/puppetlabs-vcsrepo)
+* [Git](http://git-scm.com/) either install the required packages or use a [Git Puppet Module](https://github.com/nesi/puppet-git) 
 
 # Attribution
+
+The Apaxage module was written by Aaron Hicks 2013
 
 ## puppet-blank
 
@@ -30,7 +41,7 @@ This will require a copy of the original input files to `spec/fixtures/augeas` u
 
 # Gnu General Public License
 
-[![GPL3](http://www.gnu.org/graphics/gplv3-127x51.png)]](http://www.gnu.org/licenses)
+[![GPL3](http://www.gnu.org/graphics/gplv3-127x51.png)](http://www.gnu.org/licenses)
 
 This file is part of the apaxage Puppet module.
 
