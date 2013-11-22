@@ -12,4 +12,11 @@
 #
 #     You should have received a copy of the GNU General Public License
 #     along with the apaxage Puppet module.  If not, see <http://www.gnu.org/licenses/>.
-include apaxage
+class{'apache':
+  default_vhost     => false,
+  default_ssl_vhost => true,
+}
+include apaxy
+class {'apaxage':
+  manage_vhost  => true,
+}
