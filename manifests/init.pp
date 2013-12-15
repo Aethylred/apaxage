@@ -29,12 +29,15 @@
 # [Remember: No empty lines between comments and class definition]
 class apaxage(
   $docroot      = $::apache::docroot,
+  $manage_apaxy = true,
   $manage_vhost = true,
 ) inherits apaxage::params {
 
-  apaxy::theme{'apaxage':
-    docroot       => $docroot,
-    manage_vhost  => $manage_vhost,
+  if $manage_apaxy {
+    apaxy::theme{'apaxage':
+      docroot       => $docroot,
+      manage_vhost  => $manage_vhost,
+    }
   }
 
 }

@@ -6,6 +6,16 @@ The Apaxage puppet module creates an [Apaxy](http://adamwhitcroft.com/apaxy/) th
 
 This module is a Work In Progress.
 
+# Classes
+
+## Using the apaxage class
+
+### Parameters
+
+* *docroot*: Sets the path to the document root where apaxage will be set up. Defaults to the default document root for the Puppetlabs Apache module which is OS and distribution depenent.
+* *manage_vhost*: If set to true, apaxage will set an `apache::vhost` resource to manage the Apaxage site. The default setting is `true`. If this is set to `false` the site vhost will have to be managed separately.
+* *manage_apaxy*: If set to true, apaxage will set up Apaxy on the document root with the Apaxage module. The default setting is `true`. If this is set to `false` then Apaxy will have to be managed separately.
+
 # Dependencies
 
 * [Aethylred's Apaxy Module](https://github.com/Aethylred/puppet-apaxy)
