@@ -4,6 +4,9 @@ class apaxage::params {
   require apache
   require apaxy
 
+  $header_fragment = '<h1>Apaxage Package Repository</h1><hr></hr>'
+  $footer_fragment = 'You can add your own HTML above or below the directory listing. Simply set the <tt>header_fragment</tt> and <tt>footer_fragment</tt> parameters of the <tt>apaxage</tt> class in your Puppet manifest.'
+
   # OS check does nothing and redundant as Apache catches all the
   # required cases.
   case $::osfamily {

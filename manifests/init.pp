@@ -28,15 +28,20 @@
 
 # [Remember: No empty lines between comments and class definition]
 class apaxage(
-  $docroot      = $::apache::docroot,
-  $manage_apaxy = true,
-  $manage_vhost = true,
+  $docroot          = $::apache::docroot,
+  $header_fragment  = $apaxage::params::header_fragment,
+  $footer_fragement = $apaxage::params::footer_fragment,
+  $manage_apaxy     = true,
+  $manage_vhost     = true,
 ) inherits apaxage::params {
 
   if $manage_apaxy {
     apaxy::theme{'apaxage':
-      docroot       => $docroot,
-      manage_vhost  => $manage_vhost,
+      docroot         => $docroot,
+      header_fragment => $header_fragment,
+      footer_fragment => $footer_fragment,
+      attribution     => '<a href="https://github.com/Aethylred/apaxage">Apaxage Repository module</a> by <a href="https://twitter.com/Aethylred">@Aethylred</a>',
+      manage_vhost    => $manage_vhost,
     }
   }
 
