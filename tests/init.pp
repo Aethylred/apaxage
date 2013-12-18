@@ -21,3 +21,4 @@ class {'apaxage':
   manage_vhost  => true,
 }
 apaxage::repo::yum{'centos':}
+apaxage::repo::apt{'ubuntu':}
