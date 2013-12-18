@@ -2,13 +2,27 @@
 
 The Apaxage puppet module creates an [Apaxy](http://adamwhitcroft.com/apaxy/) themed package repository for both yum and apt.
 
-# Danger Will Robinson Danger
+# Usage
 
-This module is a Work In Progress.
+The minimum installation required to get an apaxage yum repository working on the default document root of a  web server:
 
-# Classes
+```puppet
+include apaxy
+class {'apaxage':
+  manage_vhost  => true,
+}
+apaxage::repo::yum{'centos':}
+```
 
-## Using the apaxage class
+# Resources and Classes
+
+## The `apaxage` class
+
+The `apaxage` class prepares the web server to host an apaxage themed package repository. The class can set up apaxy and createrepo underneath it's document root. The class does not manage the installation of Apache, but it can use apaxy to create an `apache::vhost` to manage the virtual host configuration file for the apaxage web site. Check the [Apaxy Module](https://github.com/Aethylred/puppet-apaxy) documentation on creating custom vhost configurations.
+
+Optionally, using apaxage to install apaxy can be disabled to allow for customised installations.
+
+The apaxage class does not deploy any assets to the apaxage site (such as images or CSS stylesheets) outside what's deployed by apaxy. If custom images or other assets are required for the HTML fragments passed to the apaxage class, they will need to be deployed by other means (e.g. using `file` resources, or deploy a custom fork of apaxy).
 
 ### Parameters
 
@@ -17,6 +31,20 @@ This module is a Work In Progress.
 * *footer_fragment*: Inserts the string as a HTML fragment into the Apaxy footer. Does nothing if the `manage_apaxy` parameter is not `true`.
 * *manage_vhost*: If set to true, apaxage will set an `apache::vhost` resource to manage the Apaxage site. The default setting is `true`. If this is set to `false` the site vhost will have to be managed separately.
 * *manage_apaxy*: If set to true, apaxage will set up Apaxy on the document root with the Apaxage module. The default setting is `true`. If this is set to `false` then Apaxy will have to be managed separately.
+
+## The `apaxage::repo::yum` resource
+
+This resource defines a yum repository as a sub directory of the apaxage site deployed by the `apaxage` class. It currently uses the createrepo module to create and maintain the repository.
+
+### Parameters
+
+* *repository_dir*: This specifies the directory to be used for the repository, it must be a subdirectory within the directory tree underneath an apaxage site defined by the `apaxage` class. The default is to create a subdirectory under the apaxage document root using the `apaxage::repo::yum` resource's `name`.
+* *repo_cache_root_dir*:  Defines the directory where the yum repository data will be cached. The default is to use a subdirectory under `/var/cache/apaxage`.
+
+# To Do
+
+* Make apt repositories work (which may require somethign to handle GPG/PGP keys)
+* Consider merging the repo management libraries into apaxage
 
 # Dependencies
 
