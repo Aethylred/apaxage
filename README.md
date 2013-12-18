@@ -13,6 +13,8 @@ This module is a Work In Progress.
 ### Parameters
 
 * *docroot*: Sets the path to the document root where apaxage will be set up. Defaults to the default document root for the Puppetlabs Apache module which is OS and distribution depenent.
+* *header_fragment*: Inserts the string as a HTML fragment into the Apaxy header. Does nothing if the `manage_apaxy` parameter is not `true`.
+* *footer_fragment*: Inserts the string as a HTML fragment into the Apaxy footer. Does nothing if the `manage_apaxy` parameter is not `true`.
 * *manage_vhost*: If set to true, apaxage will set an `apache::vhost` resource to manage the Apaxage site. The default setting is `true`. If this is set to `false` the site vhost will have to be managed separately.
 * *manage_apaxy*: If set to true, apaxage will set up Apaxy on the document root with the Apaxage module. The default setting is `true`. If this is set to `false` then Apaxy will have to be managed separately.
 

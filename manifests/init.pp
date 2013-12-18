@@ -45,4 +45,9 @@ class apaxage(
     }
   }
 
+  file{'repo_cache_root_dir':
+    ensure => directory,
+    path   => $apaxage::params::repo_cache_root_dir,
+  }
+
 }
