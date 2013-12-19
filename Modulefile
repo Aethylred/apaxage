@@ -1,5 +1,5 @@
 name    'Aethylred-apaxage'
-version '0.1.0'
+version '0.1.1'
 source 'https://github.com/Aethylred/apaxage'
 author 'Aethylred'
 license 'GPL3'

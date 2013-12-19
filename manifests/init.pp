@@ -30,7 +30,7 @@
 class apaxage(
   $docroot          = $::apache::docroot,
   $header_fragment  = $apaxage::params::header_fragment,
-  $footer_fragement = $apaxage::params::footer_fragment,
+  $footer_fragment = $apaxage::params::footer_fragment,
   $manage_apaxy     = true,
   $manage_vhost     = true,
 ) inherits apaxage::params {
