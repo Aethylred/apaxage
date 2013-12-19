@@ -21,3 +21,35 @@ class {'apaxage':
   manage_vhost  => true,
 }
 apaxage::repo::yum{'centos':}
+
+file{'/var/www/puppetlabs':
+  ensure => 'directory',
+}
+file{'/var/www/puppetlabs/apt':
+  ensure => 'directory',
+}
+file{'/var/www/puppetlabs/apt/precise':
+  ensure => 'directory',
+}
+file{'/var/www/puppetlabs/yum':
+  ensure => 'directory',
+}
+
+# Try some mirroring:
+notice('mirroring apt')
+apaxage::mirror::rsync{'puppetlabs-apt':
+  source      => 'rsync://apt.puppetlabs.com/packages/apt/dists/precise',
+  target      => '/var/www/puppetlabs/apt',
+  delete      => true,
+  copy_links  => true,
+  hard_links  => true,
+}
+# notice('mirroring yum')
+# apaxage::mirror::rsync{'puppetlabs-yum':
+#   source      => 'rsync://yum.puppetlabs.com/packages/yum',
+#   target      => '/var/www/puppetlabs',
+#   delete      => true,
+#   copy_links  => true,
+#   hard_links  => true,
+#   exclude     => 'SRPMS',
+# }

@@ -9,6 +9,8 @@ class apaxage::params {
 
   $repo_cache_root_dir = '/var/cache/apaxage'
 
+  $rsync_bin = '/usr/bin/rsync'
+
   # OS check does nothing and redundant as Apache catches all the
   # required cases.
   case $::osfamily {

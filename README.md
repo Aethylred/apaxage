@@ -41,10 +41,32 @@ This resource defines a yum repository as a sub directory of the apaxage site de
 * *repository_dir*: This specifies the directory to be used for the repository, it must be a subdirectory within the directory tree underneath an apaxage site defined by the `apaxage` class. The default is to create a subdirectory under the apaxage document root using the `apaxage::repo::yum` resource's `name`.
 * *repo_cache_root_dir*:  Defines the directory where the yum repository data will be cached. The default is to use a subdirectory under `/var/cache/apaxage`.
 
+## The `apaxage::mirror::rsync` resource
+
+This resource defines an rsync mirror, it relies on the repository being mirrored to manage the packages and set up the repository. This can take quite some time, and several puppet runs for the repository to be fully mirrored.
+
+### Parameters
+* *source*: This provides the source URI from where rsync will retrieve the data. Usually of the from `rsync://example.org/path/to/dir`. This parameter is required.
+* *target*: Sets the path that rsync will copy to. This path should be previously defined as a `file` resource. The default path is created from the apaxage class `docroot` parameter and the name given to this resource.
+* *rsync_bin*: Specifies a path to the rsync binary. Defaults to `/usr/bin/rsync`.
+* *delete*: Adds the `--delete` option to the rsync command
+* *user*: appends a `user@` to the source URI.
+* *recursive*: Adds the `r` option to the rsync command to perform a recursive copy.
+* *links*: Adds the `--links` option to the rsync command to preserve symlinks.
+* *hard_links*: Adds the `H` option to the rsync command to preserve hard links.
+* *copy_links*: Adds the `L` option to the rsync command to transform symlinks to referant directory.
+* *times*: Adds the `--times` option to the rsync command to preserve timestamps.
+* *timeout*: Sets the timeout for the rsync operation, the default is 300 seconds (5 minutes).
+* *exclude*: Sets the`--exclude=` option which will exclude files that match this string.
+* *include*: Sets the `--include=` option which will include files that match the string, and over-rides excluded files.
+* *exec_user*: Sets the user to execute the rsync command as, the default is 'root'.
+
 # To Do
 
-* Make apt repositories work (which may require somethign to handle GPG/PGP keys)
+* Make apt repositories work (which may require something to handle GPG/PGP keys)
 * Consider merging the repo management libraries into apaxage
+* Consider using a suitable rsync module to sync mirrors
+* Consider syncing mirrors with cron jobs
 
 # Dependencies
 
